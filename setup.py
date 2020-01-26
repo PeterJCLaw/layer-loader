@@ -37,5 +37,6 @@ setup(
         'Topic :: Utilities',
         'Typing :: Typed',
     ],
+    test_suite='tests',
     zip_safe=True,
 )
