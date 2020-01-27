@@ -1,7 +1,6 @@
-from typing import Any, Dict, List, Type
+from typing import Type
 
-Layer = Dict[str, Any]
-Path = List[str]
+from .types import Layer, LayerElement, Path
 
 
 class TypeMismatchError(ValueError):
@@ -18,7 +17,11 @@ class TypeMismatchError(ValueError):
         self.lower_type = lower_type
 
 
-def validate_types(path: Path, upper_value: Any, lower_value: Any) -> None:
+def validate_types(
+    path: Path,
+    upper_value: LayerElement,
+    lower_value: LayerElement,
+) -> None:
     upper_type = type(upper_value)
     lower_type = type(lower_value)
 
@@ -44,6 +47,7 @@ def flatten_pair(upper: Layer, lower: Layer, current_path: Path) -> None:
         validate_types(key_path, upper_value, value)
 
         if isinstance(value, dict):
+            assert isinstance(upper_value, dict)
             flatten_pair(upper_value, value, key_path)
 
 
