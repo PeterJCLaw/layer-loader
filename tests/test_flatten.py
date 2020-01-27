@@ -58,6 +58,16 @@ class TestFlatten(unittest.TestCase):
             result,
         )
 
+    def test_null_removes_entry_when_further_overridden(self) -> None:
+        layer_1 = {'a': {'b': {'Z': 1}}}  # type: types.Layer
+        layer_2 = {'a': {'b': None}}  # type: types.Layer
+        layer_3 = {'a': {'b': {'X': 1}, 'c': {'Y': 2}}}  # type: types.Layer
+        result = flatten.flatten(layer_1, layer_2, layer_3)
+        self.assertEqual(
+            {'a': {'b': {'Z': 1}, 'c': {'Y': 2}}},
+            result,
+        )
+
     def test_different_types_is_error(self) -> None:
         layer_1 = {'a': 'a'}  # type: types.Layer
         layer_2 = {'a': 1}  # type: types.Layer

@@ -40,8 +40,8 @@ def flatten_pair(upper: Layer, lower: Layer, current_path: Path) -> None:
             # nothing will change
             continue
 
-        if upper_value is None:
-            # null values in higher layers cause lower layer values
+        if None in (upper_value, value):
+            # explicit nulls are allowed in order to clear lower values
             continue
 
         validate_types(key_path, upper_value, value)
@@ -52,6 +52,8 @@ def flatten_pair(upper: Layer, lower: Layer, current_path: Path) -> None:
 
 
 def flatten(top_layer: Layer, *layers: Layer) -> Layer:
-    for layer in layers:
-        flatten_pair(top_layer, layer, [])
+    layers = tuple(reversed([top_layer, *layers]))
+
+    for upper, lower in zip(layers[1:], layers):
+        flatten_pair(upper, lower, [])
     return top_layer
