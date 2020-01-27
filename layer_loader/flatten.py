@@ -19,9 +19,6 @@ class TypeMismatchError(ValueError):
 
 
 def validate_types(path: Path, upper_value: Any, lower_value: Any) -> None:
-    if upper_value is lower_value:
-        return
-
     upper_type = type(upper_value)
     lower_type = type(lower_value)
 
@@ -34,6 +31,11 @@ def flatten_pair(upper: Layer, lower: Layer, current_path: Path) -> None:
         key_path = current_path + [key]
 
         upper_value = upper.setdefault(key, value)
+
+        if upper_value is value:
+            # optimisation to prevent recursing into nested mappings where
+            # nothing will change
+            continue
 
         if upper_value is None:
             # null values in higher layers cause lower layer values
