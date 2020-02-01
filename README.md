@@ -22,7 +22,7 @@ data = layer_loader.load_files(
 )
 ```
 
-This will load the data from `dev.json` and `main.json`, interpretting it as JSON,
+This will load the data from `dev.json` and `main.json`, interpreting it as JSON,
 combine it into a single object and then any placeholders are expanded.
 
 ## Layers
