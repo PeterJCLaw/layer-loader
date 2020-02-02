@@ -20,7 +20,7 @@ setup(
     long_description_content_type='text/markdown',
     packages=find_packages(exclude=['tests', 'tests.*']),
     package_data={'layer_loader': ['py.typed']},
-    author='Peter Law',
+    author="Peter Law",
     author_email='PeterJCLaw@gmail.com',
     license='MIT',
     classifiers=[
