@@ -1,0 +1,8 @@
+{
+    "endpoints": [
+        "{url}/abc",
+        "{url}/def",
+        "{url}/ghi"
+    ],
+    "url": "https://production.system"
+}
