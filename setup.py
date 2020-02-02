@@ -19,9 +19,9 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=find_packages(exclude=['tests', 'tests.*']),
+    package_data={'layer_loader': ['py.typed']},
     author='Peter Law',
     author_email='PeterJCLaw@gmail.com',
-    include_package_data=True,
     license='MIT',
     classifiers=[
         'Intended Audience :: Developers',
