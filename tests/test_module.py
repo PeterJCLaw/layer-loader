@@ -1,5 +1,7 @@
 import json
 import os.path
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -29,5 +31,29 @@ class TestLoader(unittest.TestCase):
             ],
             loader=json.load,
         )
+
+        self.assertEqual(expected, data)
+
+    def test_run_module(self) -> None:
+        expected = {
+            "a": 1,
+            "endpoints": [
+                "http://localhost:8000/abc",
+                "http://localhost:8000/def",
+                "http://localhost:8000/ghi",
+            ],
+            "url": "http://localhost:8000",
+        }
+
+        output = subprocess.check_output([
+            sys.executable,
+            '-m', 'layer_loader',
+            '--loader=json.load',
+            'tests/data/overlay.json',
+            'tests/data/a.json',
+            'tests/data/base.json',
+        ]).decode('utf-8')
+
+        data = json.loads(output)
 
         self.assertEqual(expected, data)
