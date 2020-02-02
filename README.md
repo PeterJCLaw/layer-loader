@@ -25,6 +25,33 @@ data = layer_loader.load_files(
 This will load the data from `dev.json` and `main.json`, interpreting it as JSON,
 combine it into a single object and then any placeholders are expanded.
 
+For convenience you can also run `layer_loader` as a module:
+
+```shell
+$ cat dev.json
+{
+    "url": "http://localhost:8000"
+}
+$ cat main.json
+{
+    "endpoints": [
+        "{url}/abc",
+        "{url}/def",
+        "{url}/ghi"
+    ],
+    "url": "https://production.system"
+}
+$ python -m layer_loader --loader=json.load dev.json main.json
+{
+    "endpoints": [
+        "http://localhost:8000/abc",
+        "http://localhost:8000/def",
+        "http://localhost:8000/ghi"
+    ],
+    "url": "http://localhost:8000"
+}
+```
+
 ## Layers
 
 Layers are specified in order from most important (top) to least important (bottom).
