@@ -93,6 +93,7 @@ def do_expansion(root: Layer, value: LayerElement, key_path: Path) -> LayerEleme
             # accurately representing that using Python's type system ends up
             # needing casts in each of the isinstance guarded `return`s below.
             # Having the cast here is therefore simpler.
+            # See https://github.com/python/mypy/issues/8354 for details.
             return cast(str, expanded)
         finally:
             del PLACEHOLDER_STACK[path_tuple]
