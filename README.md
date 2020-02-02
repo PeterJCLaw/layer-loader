@@ -69,7 +69,7 @@ When combining layers, layer-loader uses the following rules:
 
 Placeholders are specified similarly to python format strings and may appear
 anywhere inside a string value, for example `'foo {place.holder} bar'`.
-Placeholders may *not* appear in keys.
+Placeholders should not appear in keys -- they will not be found there.
 
 Placeholders are expanded by walking the flattened data structure, using dots in
 the placeholder to separate names at each level of nesting.
