@@ -27,7 +27,7 @@ class CyclicPlaceholderError(ValueError):
     def __init__(self, placeholders: List[Path]) -> None:
         super().__init__(
             "Cyclic placeholder found: {}".format(
-                ' -> '.join('.'.join(x) for x in (*placeholders, placeholders[0]))
+                ' -> '.join('.'.join(x) for x in (*placeholders, placeholders[0])),
             ),
         )
         self.placeholders = placeholders
