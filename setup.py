@@ -10,7 +10,8 @@ setup(
     version='0.0.1',
     url='https://github.com/PeterJCLaw/layer-loader',
     project_urls={
-        'Documentation':  'https://github.com/PeterJCLaw/layer-loader/blob/master/READNE.md',
+        'Documentation':
+            'https://github.com/PeterJCLaw/layer-loader/blob/master/READNE.md',
         'Code': 'https://github.com/PeterJCLaw/layer-loader',
         'Issue tracker': 'https://github.com/PeterJCLaw/layer-loader/issues',
     },
