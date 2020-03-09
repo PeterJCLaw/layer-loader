@@ -1,6 +1,6 @@
 import collections
 import re
-from typing import Dict, List, Match, Tuple, cast
+from typing import cast, Dict, List, Match, Tuple
 
 from .types import Layer, LayerElement, Path
 

@@ -3,7 +3,7 @@ import json
 import os.path
 import unittest
 from pathlib import Path
-from typing import IO, cast
+from typing import cast, IO
 from unittest import mock
 
 from layer_loader import loader

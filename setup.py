@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-from setuptools import setup, find_packages
-
+from setuptools import find_packages, setup
 
 with open('README.md') as file:
     long_description = file.read()

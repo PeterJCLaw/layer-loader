@@ -1,6 +1,6 @@
 import contextlib
 from pathlib import Path
-from typing import IO, Any, Callable, Iterable, Union, cast
+from typing import Any, Callable, cast, IO, Iterable, Union
 
 from . import expansion, flatten, types
 
