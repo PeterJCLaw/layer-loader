@@ -4,7 +4,12 @@ from .types import Layer, LayerElement, Path
 
 
 class TypeMismatchError(ValueError):
-    def __init__(self, path: Path, upper_type: Type, lower_type: Type) -> None:
+    def __init__(
+        self,
+        path: Path,
+        upper_type: Type[object],
+        lower_type: Type[object],
+    ) -> None:
         super().__init__(
             "Entry type mismatch at {!r}, got types {} and {}".format(
                 '.'.join(path),

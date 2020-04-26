@@ -74,7 +74,7 @@ PLACEHOLDER_STACK = collections.OrderedDict()  # type: Dict[Tuple[str, ...], Non
 
 
 def do_expansion(root: Layer, value: LayerElement, key_path: Path) -> LayerElement:
-    def repl(match: Match) -> str:
+    def repl(match: Match[str]) -> str:
         placeholder_str = match.group(1)
         path = placeholder_str.split('.')
         path_tuple = tuple(path)

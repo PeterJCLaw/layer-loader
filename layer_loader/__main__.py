@@ -4,13 +4,13 @@ import argparse
 import functools
 import importlib
 import json
-from typing import Callable, cast
+from typing import Any, Callable, cast
 
 import layer_loader
 
 
 class DottedToCallableType:
-    def __call__(self, name: str) -> Callable:
+    def __call__(self, name: str) -> Callable[..., Any]:
         module_name, attribute_name = name.rsplit('.', maxsplit=1)
 
         try:
@@ -22,7 +22,7 @@ class DottedToCallableType:
         if not callable(func):
             raise argparse.ArgumentTypeError("{!r} must be callable.".format(name))
 
-        return cast(Callable, func)
+        return cast(Callable[..., Any], func)
 
     def __repr__(self) -> str:
         return "dotted python path"
